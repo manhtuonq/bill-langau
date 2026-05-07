@@ -4,21 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bill - La Ngâu</title>
-
-<!-- Open Graph / Zalo / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bill - La Ngâu">
 <meta property="og:description" content="Quản lý hóa đơn đặt chỗ tại Phạm Đoàn La Ngâu">
-<meta property="og:image" content="https://p16-common-sign.tiktokcdn.com/tos-alisg-avt-0068/a9c16cc1661de7178cf3a4899b589538~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=a1fc27a8&x-expires=1776398400&x-signature=RG%2Funb%2BUzhMz5I1DsIq4LrCh5dI%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my">
-<meta property="og:image:width" content="1080">
-<meta property="og:image:height" content="1080">
-<meta property="og:site_name" content="Bill La Ngâu">
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bill - La Ngâu">
-<meta name="twitter:description" content="Quản lý hóa đơn đặt chỗ tại Phạm Đoàn La Ngâu">
-<meta name="twitter:image" content="https://p16-common-sign.tiktokcdn.com/tos-alisg-avt-0068/a9c16cc1661de7178cf3a4899b589538~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=a1fc27a8&x-expires=1776398400&x-signature=RG%2Funb%2BUzhMz5I1DsIq4LrCh5dI%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my">
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -33,456 +21,381 @@
     --cyan: #1a6fc4;
     --white: #1a2b45;
     --muted: #6b89ad;
-    --border: rgba(30, 95, 168, 0.15);
+    --border: rgba(30,95,168,0.15);
     --gold: #d4900a;
+    --refund: #dc2626;
+    --refund-bg: rgba(220,38,38,0.08);
+    --green: #16a34a;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--navy);
-    color: var(--white);
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
+    font-family:'Montserrat',sans-serif;
+    background:var(--navy);
+    color:var(--white);
+    display:flex;
+    height:100vh;
+    overflow:hidden;
   }
 
   /* SIDEBAR */
   .sidebar {
-    width: 240px;
-    min-width: 240px;
-    background: #1e3d6e;
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    transition: width 0.3s;
-    z-index: 100;
+    width:240px; min-width:240px;
+    background:#1e3d6e;
+    border-right:1px solid var(--border);
+    display:flex; flex-direction:column;
+    transition:left 0.3s;
+    z-index:100;
   }
-
   .logo {
-    padding: 28px 20px 22px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    padding:28px 20px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    display:flex; align-items:center; gap:12px;
   }
-
   .logo-icon {
-    width: 42px; height: 42px;
-    background: var(--blue-accent);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; color: var(--cyan);
-    flex-shrink: 0;
+    width:42px; height:42px;
+    background:var(--blue-accent);
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; color:#7bc8f0; flex-shrink:0;
   }
-
-  .logo-text {
-    display: flex; flex-direction: column;
-    line-height: 1.2;
-  }
-
-  .logo-text span:first-child {
-    font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 1px;
-  }
-
-  .logo-text span:last-child {
-    font-size: 11px; font-weight: 500; color: #7bc8f0; letter-spacing: 2px; text-transform: uppercase;
-  }
-
-  .nav-menu { padding: 20px 12px; flex: 1; }
-
+  .logo-text { display:flex; flex-direction:column; line-height:1.2; }
+  .logo-text span:first-child { font-size:16px; font-weight:800; color:#fff; letter-spacing:1px; }
+  .logo-text span:last-child { font-size:11px; font-weight:500; color:#7bc8f0; letter-spacing:2px; text-transform:uppercase; }
+  .nav-menu { padding:20px 12px; flex:1; }
   .nav-section-label {
-    font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.4);
-    letter-spacing: 2px; text-transform: uppercase;
-    padding: 0 8px 10px;
+    font-size:9px; font-weight:700; color:rgba(255,255,255,0.4);
+    letter-spacing:2px; text-transform:uppercase;
+    padding:0 8px 10px;
   }
-
   .nav-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 11px 14px; border-radius: 10px;
-    cursor: pointer; font-size: 13px; font-weight: 500;
-    color: rgba(255,255,255,0.6); transition: all 0.2s;
-    margin-bottom: 4px;
+    display:flex; align-items:center; gap:12px;
+    padding:11px 14px; border-radius:10px;
+    cursor:pointer; font-size:13px; font-weight:500;
+    color:rgba(255,255,255,0.6); transition:all 0.2s;
+    margin-bottom:4px;
   }
-
-  .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
-
-  .nav-item.active {
-    background: var(--blue-accent);
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(30,95,168,0.4);
-  }
-
-  .nav-item i { width: 18px; text-align: center; font-size: 14px; }
-
+  .nav-item:hover { background:rgba(255,255,255,0.1); color:#fff; }
+  .nav-item.active { background:var(--blue-accent); color:#fff; box-shadow:0 4px 16px rgba(30,95,168,0.4); }
+  .nav-item i { width:18px; text-align:center; font-size:14px; }
   .sidebar-footer {
-    padding: 16px 12px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 11px; color: rgba(255,255,255,0.4);
-    text-align: center;
+    padding:16px 12px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:11px; color:rgba(255,255,255,0.4); text-align:center;
   }
 
   /* MAIN */
-  .main {
-    flex: 1;
-    overflow-y: auto;
-    display: flex; flex-direction: column;
-  }
-
+  .main { flex:1; overflow-y:auto; display:flex; flex-direction:column; }
   .topbar {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-    padding: 0 28px;
-    height: 62px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-shrink: 0;
-    position: sticky; top: 0; z-index: 50;
-    box-shadow: 0 2px 12px rgba(30,95,168,0.07);
+    background:#ffffff;
+    border-bottom:1px solid var(--border);
+    padding:0 28px; height:62px;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-shrink:0;
+    position:sticky; top:0; z-index:50;
+    box-shadow:0 2px 12px rgba(30,95,168,0.07);
   }
-
-  .topbar-title { font-size: 18px; font-weight: 700; color: var(--white); }
-  .topbar-sub { font-size: 11px; color: var(--muted); font-weight: 500; }
-
-  .topbar-right { display: flex; align-items: center; gap: 16px; }
-
+  .topbar-title { font-size:18px; font-weight:700; color:var(--white); }
+  .topbar-sub { font-size:11px; color:var(--muted); font-weight:500; }
+  .topbar-right { display:flex; align-items:center; gap:10px; }
   .topbar-badge {
-    background: var(--blue-accent);
-    color: var(--white);
-    padding: 5px 14px; border-radius: 20px;
-    font-size: 11px; font-weight: 700;
-    display: flex; align-items: center; gap: 6px;
+    background:var(--blue-accent); color:#fff;
+    padding:5px 14px; border-radius:20px;
+    font-size:11px; font-weight:700;
+    display:flex; align-items:center; gap:6px;
   }
-
-  .hamburger {
-    display: none; background: none; border: none;
-    color: var(--white); font-size: 20px; cursor: pointer;
-  }
+  .topbar-badge.refund-badge { background:var(--refund); }
+  .hamburger { display:none; background:none; border:none; color:var(--white); font-size:20px; cursor:pointer; }
 
   /* CONTENT */
-  .content { padding: 28px; flex: 1; }
+  .content { padding:28px; flex:1; }
 
-  /* STATS ROW */
+  /* STATS */
   .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 30px;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:16px; margin-bottom:30px;
   }
-
   .stat-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 24px;
-    display: flex; align-items: center; gap: 18px;
-    transition: transform 0.2s;
-    box-shadow: 0 2px 12px rgba(30,95,168,0.07);
+    background:#ffffff; border:1px solid var(--border);
+    border-radius:14px; padding:20px 20px;
+    display:flex; align-items:center; gap:16px;
+    transition:transform 0.2s;
+    box-shadow:0 2px 12px rgba(30,95,168,0.07);
   }
-
-  .stat-card:hover { transform: translateY(-2px); }
-
+  .stat-card:hover { transform:translateY(-2px); }
   .stat-icon {
-    width: 50px; height: 50px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
+    width:46px; height:46px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; flex-shrink:0;
   }
+  .stat-icon.green  { background:rgba(34,197,94,0.12); color:#16a34a; }
+  .stat-icon.cyan   { background:rgba(30,95,168,0.12); color:var(--cyan); }
+  .stat-icon.gold   { background:rgba(212,144,10,0.12); color:var(--gold); }
+  .stat-icon.red    { background:rgba(220,38,38,0.12); color:var(--refund); }
+  .stat-label { font-size:10px; font-weight:600; color:var(--muted); letter-spacing:0.5px; text-transform:uppercase; }
+  .stat-value { font-size:20px; font-weight:800; color:var(--white); margin-top:4px; }
+  .stat-value span { font-size:11px; font-weight:500; color:var(--muted); margin-left:4px; }
 
-  .stat-icon.green  { background: rgba(34,197,94,0.12); color: #16a34a; }
-  .stat-icon.cyan   { background: rgba(30,95,168,0.12); color: var(--cyan); }
-  .stat-icon.gold   { background: rgba(212,144,10,0.12); color: var(--gold); }
-
-  .stat-label { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
-  .stat-value { font-size: 22px; font-weight: 800; color: var(--white); margin-top: 4px; }
-  .stat-value span { font-size: 12px; font-weight: 500; color: var(--muted); margin-left: 4px; }
-
-  /* BILLS SECTION */
+  /* SECTION */
   .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 18px;
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:18px; flex-wrap:wrap; gap:10px;
   }
-
-  .section-title {
-    font-size: 15px; font-weight: 700; color: var(--white);
-    display: flex; align-items: center; gap: 10px;
-  }
-
-  .section-title i { color: var(--cyan); }
-
+  .section-title { font-size:15px; font-weight:700; color:var(--white); display:flex; align-items:center; gap:10px; }
+  .section-title i { color:var(--cyan); }
   .bill-count {
-    background: var(--navy-light);
-    border: 1px solid var(--border);
-    padding: 4px 14px; border-radius: 20px;
-    font-size: 11px; font-weight: 600; color: var(--muted);
+    background:var(--navy-light); border:1px solid var(--border);
+    padding:4px 14px; border-radius:20px;
+    font-size:11px; font-weight:600; color:var(--muted);
   }
+
+  /* FILTER TABS */
+  .filter-tabs { display:flex; gap:8px; flex-wrap:wrap; }
+  .filter-tab {
+    padding:6px 14px; border-radius:20px;
+    font-size:11px; font-weight:600;
+    cursor:pointer; border:1.5px solid var(--border);
+    background:#fff; color:var(--muted);
+    transition:all 0.2s; font-family:'Montserrat',sans-serif;
+  }
+  .filter-tab:hover { border-color:var(--cyan); color:var(--cyan); }
+  .filter-tab.active { background:var(--blue-accent); border-color:var(--blue-accent); color:#fff; }
+  .filter-tab.refund-tab.active { background:var(--refund); border-color:var(--refund); }
 
   /* BILL GRID */
-  .bills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-
+  .bills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
   .bill-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 10px rgba(30,95,168,0.06);
+    background:#ffffff; border:1px solid var(--border);
+    border-radius:14px; overflow:hidden;
+    cursor:pointer;
+    transition:transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow:0 2px 10px rgba(30,95,168,0.06);
+    position:relative;
   }
+  .bill-card:hover { transform:translateY(-4px); border-color:var(--cyan); box-shadow:0 8px 30px rgba(56,189,248,0.15); }
+  .bill-card.refund-card { border-color:rgba(220,38,38,0.3); background:rgba(255,245,245,0.7); }
+  .bill-card.refund-card:hover { border-color:var(--refund); box-shadow:0 8px 30px rgba(220,38,38,0.15); }
 
-  .bill-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--cyan);
-    box-shadow: 0 8px 30px rgba(56,189,248,0.15);
+  .refund-ribbon {
+    position:absolute; top:0; right:0;
+    background:var(--refund); color:#fff;
+    font-size:9px; font-weight:800;
+    padding:3px 10px 3px 16px;
+    border-radius:0 0 0 12px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    z-index:10;
+    display:flex; align-items:center; gap:4px;
+    cursor:pointer;
   }
+  .refund-ribbon:hover { background:#b91c1c; }
 
   .bill-card-header {
-    background: var(--blue-accent);
-    padding: 12px 14px;
-    display: flex; align-items: center; justify-content: space-between;
+    background:var(--blue-accent);
+    padding:12px 14px;
+    display:flex; align-items:center; justify-content:space-between;
   }
-
-  .bill-id { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.5px; }
-  .bill-date { font-size: 9px; color: rgba(255,255,255,0.6); }
-
-  .bill-card-body { padding: 14px; }
-
-  .bill-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-
-  .bill-meta { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
-
-  .bill-meta-row {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 10px; color: var(--muted); font-weight: 500;
-  }
-
-  .bill-meta-row i { width: 12px; text-align: center; color: var(--cyan); font-size: 10px; }
+  .bill-card.refund-card .bill-card-header { background:var(--refund); }
+  .bill-id { font-size:9px; font-weight:700; color:rgba(255,255,255,0.75); letter-spacing:0.5px; }
+  .bill-date { font-size:9px; color:rgba(255,255,255,0.6); }
+  .bill-card-body { padding:14px; }
+  .bill-name { font-size:13px; font-weight:700; color:var(--white); margin-bottom:8px; }
+  .bill-meta { display:flex; flex-direction:column; gap:5px; margin-bottom:12px; }
+  .bill-meta-row { display:flex; align-items:center; gap:6px; font-size:10px; color:var(--muted); font-weight:500; }
+  .bill-meta-row i { width:12px; text-align:center; color:var(--cyan); font-size:10px; }
+  .bill-card.refund-card .bill-meta-row i { color:var(--refund); }
 
   .bill-amounts {
-    display: flex; justify-content: space-between;
-    border-top: 1px solid var(--border); padding-top: 10px;
-    margin-top: 8px;
+    display:flex; justify-content:space-between;
+    border-top:1px solid var(--border); padding-top:10px; margin-top:8px;
   }
-
-  .amount-item { display: flex; flex-direction: column; gap: 2px; }
-  .amount-label { font-size: 9px; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-  .amount-val { font-size: 13px; font-weight: 800; }
-  .amount-val.total { color: var(--cyan); }
-  .amount-val.deposit { color: var(--gold); }
+  .amount-item { display:flex; flex-direction:column; gap:2px; }
+  .amount-label { font-size:9px; color:var(--muted); font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+  .amount-val { font-size:13px; font-weight:800; }
+  .amount-val.total { color:var(--cyan); }
+  .amount-val.deposit { color:var(--gold); }
+  .amount-val.refunded { color:var(--refund); text-decoration:line-through; opacity:0.7; }
 
   .bill-detail-btn {
-    width: 100%; margin-top: 12px;
-    padding: 8px;
-    background: #f0f5fb;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--cyan); font-size: 11px; font-weight: 700;
-    cursor: pointer; font-family: 'Montserrat', sans-serif;
-    transition: background 0.2s;
-    display: flex; align-items: center; justify-content: center; gap: 6px;
+    width:100%; margin-top:12px; padding:8px;
+    background:#f0f5fb; border:1px solid var(--border);
+    border-radius:8px; color:var(--cyan);
+    font-size:11px; font-weight:700;
+    cursor:pointer; font-family:'Montserrat',sans-serif;
+    transition:background 0.2s;
+    display:flex; align-items:center; justify-content:center; gap:6px;
   }
-
-  .bill-detail-btn:hover { background: var(--blue-accent); border-color: var(--blue-accent); color: var(--white); }
+  .bill-detail-btn:hover { background:var(--blue-accent); border-color:var(--blue-accent); color:#fff; }
+  .bill-detail-btn.refund-btn { color:var(--refund); background:var(--refund-bg); border-color:rgba(220,38,38,0.2); }
+  .bill-detail-btn.refund-btn:hover { background:var(--refund); border-color:var(--refund); color:#fff; }
 
   /* PAGINATION */
-  .pagination {
-    display: flex; align-items: center; gap: 8px;
-    justify-content: center; margin-top: 28px;
-  }
-
+  .pagination { display:flex; align-items:center; gap:8px; justify-content:center; margin-top:28px; }
   .page-btn {
-    width: 34px; height: 34px;
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 8px; color: var(--muted); font-size: 12px; font-weight: 600;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    font-family: 'Montserrat', sans-serif; transition: all 0.2s;
+    width:34px; height:34px;
+    background:#fff; border:1px solid var(--border);
+    border-radius:8px; color:var(--muted); font-size:12px; font-weight:600;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-family:'Montserrat',sans-serif; transition:all 0.2s;
   }
-
-  .page-btn:hover, .page-btn.active { background: var(--blue-accent); border-color: var(--blue-accent); color: var(--white); }
+  .page-btn:hover, .page-btn.active { background:var(--blue-accent); border-color:var(--blue-accent); color:#fff; }
 
   /* MODAL */
   .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(5, 12, 24, 0.9);
-    z-index: 1000;
-    display: none; align-items: center; justify-content: center;
-    padding: 20px;
-    backdrop-filter: blur(6px);
+    position:fixed; inset:0;
+    background:rgba(5,12,24,0.88);
+    z-index:1000; display:none;
+    align-items:center; justify-content:center;
+    padding:16px;
+    backdrop-filter:blur(6px);
   }
-
-  .modal-overlay.open { display: flex; }
-
+  .modal-overlay.open { display:flex; }
   .modal {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    width: 100%; max-width: 560px;
-    max-height: 90vh; overflow-y: auto;
-    animation: slideUp 0.3s ease;
-    box-shadow: 0 20px 60px rgba(30,95,168,0.2);
+    background:#ffffff; border:1px solid var(--border);
+    border-radius:20px; width:100%; max-width:580px;
+    max-height:92vh; overflow-y:auto;
+    animation:slideUp 0.3s ease;
+    box-shadow:0 20px 60px rgba(30,95,168,0.2);
   }
-
+  .modal.refund-modal { box-shadow:0 20px 60px rgba(220,38,38,0.2); }
   @keyframes slideUp {
-    from { opacity:0; transform: translateY(30px); }
-    to   { opacity:1; transform: translateY(0); }
+    from { opacity:0; transform:translateY(30px); }
+    to   { opacity:1; transform:translateY(0); }
   }
-
   .modal-header {
-    background: var(--blue-accent);
-    padding: 18px 22px;
-    border-radius: 20px 20px 0 0;
-    display: flex; align-items: flex-start; justify-content: space-between;
+    background:var(--blue-accent);
+    padding:18px 22px; border-radius:20px 20px 0 0;
+    display:flex; align-items:flex-start; justify-content:space-between;
   }
+  .modal-header.refund-header { background:var(--refund); }
+  .modal-header-left { display:flex; flex-direction:column; gap:4px; }
+  .modal-bill-id { font-size:11px; color:rgba(255,255,255,0.65); font-weight:600; }
+  .modal-bill-date { font-size:12px; color:rgba(255,255,255,0.85); }
+  .modal-close { background:none; border:none; color:rgba(255,255,255,0.7); font-size:18px; cursor:pointer; transition:color 0.2s; }
+  .modal-close:hover { color:white; }
+  .modal-body { padding:22px; }
 
-  .modal-header-left { display: flex; flex-direction: column; gap: 4px; }
-  .modal-bill-id { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 600; }
-  .modal-bill-date { font-size: 12px; color: rgba(255,255,255,0.8); }
-  .modal-close { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 18px; cursor: pointer; transition: color 0.2s; }
-  .modal-close:hover { color: white; }
-
-  .modal-body { padding: 22px; }
-
-  .modal-row {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 10px 0; border-bottom: 1px solid var(--border);
-    gap: 12px;
+  /* REFUND BANNER */
+  .refund-banner {
+    background:var(--refund-bg); border:1.5px solid rgba(220,38,38,0.25);
+    border-radius:10px; padding:12px 14px;
+    margin-bottom:16px;
+    display:flex; align-items:flex-start; gap:10px;
   }
-
-  .modal-row:last-child { border-bottom: none; }
-
-  .modal-row-label { font-size: 12px; color: var(--muted); font-weight: 600; flex-shrink: 0; }
-  .modal-row-value { font-size: 12px; color: var(--white); font-weight: 600; text-align: right; }
-  .modal-row-value.highlight { color: var(--cyan); font-size: 14px; font-weight: 800; }
-  .modal-row-value.gold { color: var(--gold); font-size: 14px; font-weight: 800; }
-
-  .modal-img-section { margin-top: 18px; }
-  .modal-img-label { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
-  .modal-img-wrap {
-    border-radius: 12px; overflow: hidden;
-    border: 1px solid var(--border);
-    background: #f5f8fc;
-    display: flex; align-items: center; justify-content: center;
+  .refund-banner i { color:var(--refund); font-size:16px; flex-shrink:0; margin-top:1px; }
+  .refund-banner-text { font-size:11px; color:var(--refund); font-weight:600; line-height:1.5; }
+  .refund-reason-btn {
+    margin-top:8px; display:inline-flex; align-items:center; gap:5px;
+    background:var(--refund); color:#fff;
+    padding:5px 12px; border-radius:6px;
+    font-size:10px; font-weight:700; cursor:pointer; border:none;
+    font-family:'Montserrat',sans-serif; transition:background 0.2s;
   }
+  .refund-reason-btn:hover { background:#b91c1c; }
 
-  .modal-img-wrap img { width: 100%; max-height: 400px; object-fit: contain; display: block; }
-
-  /* OVERLAY SIDEBAR MOBILE */
-  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
-
-  /* MODAL 2-COLUMN LAYOUT */
   .modal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
   }
-
   .modal-grid .modal-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    border-right: 1px solid var(--border);
+    flex-direction:column; align-items:flex-start; gap:4px;
+    padding:10px 12px;
+    border-bottom:1px solid var(--border);
+    border-right:1px solid var(--border);
+    display:flex;
   }
-
-  /* Remove right border on even columns */
-  .modal-grid .modal-row:nth-child(2n) {
-    border-right: none;
-  }
-
-  /* Last row pair: remove bottom border */
+  .modal-grid .modal-row:nth-child(2n) { border-right:none; }
   .modal-grid .modal-row:nth-last-child(-n+2):nth-child(odd),
-  .modal-grid .modal-row:last-child {
-    border-bottom: none;
-  }
+  .modal-grid .modal-row:last-child { border-bottom:none; }
+  .modal-row-label { font-size:11px; color:var(--muted); font-weight:600; }
+  .modal-row-value { font-size:11px; color:var(--white); font-weight:600; }
+  .modal-row-value.highlight { color:var(--cyan); font-size:13px; font-weight:800; }
+  .modal-row-value.gold { color:var(--gold); font-size:13px; font-weight:800; }
+  .modal-row-value.refund-val { color:var(--refund); font-size:13px; font-weight:800; text-decoration:line-through; }
 
-  .modal-grid .modal-row-value {
-    text-align: left;
-    font-size: 11px;
-  }
-
-  .modal-grid .modal-row-value.highlight,
-  .modal-grid .modal-row-value.gold {
-    font-size: 13px;
-  }
-
-  /* Full-width rows (note, image) */
   .modal-row-full {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
+    grid-column:1/-1; display:flex; flex-direction:column; gap:4px;
+    padding:10px 12px; border-bottom:1px solid var(--border);
   }
+  .modal-row-full:last-child { border-bottom:none; }
+  .modal-row-full .modal-row-value { font-size:11px; }
 
-  .modal-row-full:last-child { border-bottom: none; }
-
-  .modal-row-full .modal-row-value {
-    font-size: 11px;
-    text-align: left;
+  .modal-img-section { padding:12px; margin-top:4px; }
+  .modal-img-label { font-size:11px; color:var(--muted); font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+  .modal-img-wrap {
+    border-radius:12px; overflow:hidden;
+    border:1px solid var(--border);
+    background:#f5f8fc;
+    display:flex; align-items:center; justify-content:center;
+    cursor:zoom-in;
   }
+  .modal-img-wrap img { width:100%; max-height:420px; object-fit:contain; display:block; transition:transform 0.3s; }
+  .modal-img-wrap:hover img { transform:scale(1.02); }
+
+  /* IMAGE LIGHTBOX */
+  .lightbox {
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.95);
+    z-index:2000; display:none;
+    align-items:center; justify-content:center;
+    padding:20px;
+  }
+  .lightbox.open { display:flex; }
+  .lightbox img { max-width:100%; max-height:90vh; object-fit:contain; border-radius:8px; }
+  .lightbox-close {
+    position:absolute; top:16px; right:20px;
+    background:rgba(255,255,255,0.15); border:none;
+    color:#fff; font-size:22px; width:40px; height:40px;
+    border-radius:50%; cursor:pointer; display:flex;
+    align-items:center; justify-content:center;
+    transition:background 0.2s;
+  }
+  .lightbox-close:hover { background:rgba(255,255,255,0.3); }
+
+  /* SIDEBAR OVERLAY MOBILE */
+  .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:90; }
 
   /* RESPONSIVE */
-  @media (max-width: 1100px) {
-    .bills-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats-row { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width:1280px) { .bills-grid { grid-template-columns:repeat(3,1fr); } .stats-row { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:1000px) { .bills-grid { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:768px) {
+    .sidebar { position:fixed; left:-240px; top:0; bottom:0; background:#1e3d6e; }
+    .sidebar.open { left:0; }
+    .sidebar-overlay.open { display:block; }
+    .hamburger { display:block; }
+    .stats-row { grid-template-columns:repeat(2,1fr); }
+    .bills-grid { grid-template-columns:repeat(2,1fr); }
+    .content { padding:14px; }
+    .topbar { padding:0 14px; }
+    .topbar-title { font-size:15px; }
+    .modal { max-width:98vw; border-radius:14px; }
+    .modal-body { padding:14px; }
+  }
+  @media (max-width:480px) {
+    .bills-grid { grid-template-columns:1fr 1fr; }
+    .stats-row { grid-template-columns:1fr 1fr; }
+    .stat-card { padding:13px 11px; gap:10px; }
+    .stat-icon { width:36px; height:36px; font-size:14px; }
+    .stat-value { font-size:15px; }
+    .content { padding:10px; }
+    .modal-header { padding:14px 16px; }
+    .bill-card-body { padding:11px; }
+    .bill-name { font-size:12px; }
+    .amount-val { font-size:12px; }
+    .filter-tabs { gap:6px; }
+    .filter-tab { padding:5px 10px; font-size:10px; }
   }
 
-  @media (max-width: 900px) {
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 768px) {
-    .sidebar {
-      position: fixed; left: -240px; top: 0; bottom: 0;
-      background: #1e3d6e;
-      transition: left 0.3s;
-    }
-    .sidebar.open { left: 0; }
-    .sidebar-overlay.open { display: block; }
-    .hamburger { display: block; }
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
-    .bills-grid { grid-template-columns: repeat(2, 1fr); }
-    .content { padding: 16px; }
-    .topbar { padding: 0 16px; }
-    .topbar-title { font-size: 15px; }
-    .modal { max-width: 98vw; border-radius: 14px; }
-    .modal-body { padding: 14px; }
-    .modal-grid { grid-template-columns: 1fr 1fr; }
-    .modal-grid .modal-row { padding: 8px 10px; }
-  }
-
-  @media (max-width: 480px) {
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
-    .bills-grid { grid-template-columns: repeat(2, 1fr); }
-    .stat-card { padding: 14px 12px; gap: 10px; }
-    .stat-icon { width: 38px; height: 38px; font-size: 15px; }
-    .stat-value { font-size: 16px; }
-    .content { padding: 12px; }
-    .modal { border-radius: 12px; }
-    .modal-grid { grid-template-columns: 1fr 1fr; }
-    .modal-header { padding: 14px 16px; }
-    .section-header { flex-wrap: wrap; gap: 8px; }
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--navy-mid); }
-  ::-webkit-scrollbar-thumb { background: var(--blue-accent); border-radius: 3px; }
+  ::-webkit-scrollbar { width:5px; }
+  ::-webkit-scrollbar-track { background:var(--navy-mid); }
+  ::-webkit-scrollbar-thumb { background:var(--blue-accent); border-radius:3px; }
 </style>
 </head>
 <body>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="logo">
+    <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
     <div class="logo-text">
       <span>Bill</span>
       <span>La Ngâu</span>
@@ -490,10 +403,10 @@
   </div>
   <nav class="nav-menu">
     <div class="nav-section-label">Quản lý</div>
-    <div class="nav-item active" onclick="setPage('overview')">
+    <div class="nav-item active" onclick="setPage('overview',this)">
       <i class="fa-solid fa-chart-pie"></i> Tổng Quan
     </div>
-    <div class="nav-item" onclick="setPage('bills')">
+    <div class="nav-item" onclick="setPage('bills',this)">
       <i class="fa-solid fa-file-invoice-dollar"></i> Danh Sách Bill
     </div>
     <div class="nav-item">
@@ -508,11 +421,10 @@
     </div>
   </nav>
   <div class="sidebar-footer">
-    <i class="fa-solid fa-mountain-sun"></i> &nbsp;Phạm Đoàn La Ngâu &copy; 2026
+    <i class="fa-solid fa-mountain-sun"></i>&nbsp; Phạm Đoàn La Ngâu &copy; 2026
   </div>
 </aside>
 
-<!-- MAIN -->
 <div class="main">
   <header class="topbar">
     <div style="display:flex;align-items:center;gap:14px">
@@ -523,60 +435,70 @@
       </div>
     </div>
     <div class="topbar-right">
-      <div class="topbar-badge"><i class="fa-solid fa-circle-check"></i> 7 Bills</div>
+      <div class="topbar-badge"><i class="fa-solid fa-circle-check"></i> <span id="badgeCount">9 Bills</span></div>
     </div>
   </header>
 
-  <div class="content" id="mainContent">
-    <!-- Overview page -->
-    <div id="overviewPage">
-
-      <!-- STATS -->
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-icon cyan"><i class="fa-solid fa-money-bill-wave"></i></div>
-          <div>
-            <div class="stat-label">Tổng Tiền</div>
-            <div class="stat-value" id="statTotal">0 <span>VNĐ</span></div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon gold"><i class="fa-solid fa-coins"></i></div>
-          <div>
-            <div class="stat-label">Tổng Cọc</div>
-            <div class="stat-value" id="statDeposit">0 <span>VNĐ</span></div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon green"><i class="fa-solid fa-users"></i></div>
-          <div>
-            <div class="stat-label">Tổng Người</div>
-            <div class="stat-value" id="statPeople">0 <span>người</span></div>
-          </div>
+  <div class="content">
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon cyan"><i class="fa-solid fa-money-bill-wave"></i></div>
+        <div>
+          <div class="stat-label">Tổng Tiền (Hợp lệ)</div>
+          <div class="stat-value" id="statTotal">0 <span>VNĐ</span></div>
         </div>
       </div>
-
-      <!-- BILLS -->
-      <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-layer-group"></i> Danh Sách Hóa Đơn</div>
-        <div class="bill-count" id="billCountLabel">7 hóa đơn</div>
+      <div class="stat-card">
+        <div class="stat-icon gold"><i class="fa-solid fa-coins"></i></div>
+        <div>
+          <div class="stat-label">Tổng Cọc (Hợp lệ)</div>
+          <div class="stat-value" id="statDeposit">0 <span>VNĐ</span></div>
+        </div>
       </div>
-
-      <div class="bills-grid" id="billsGrid"></div>
-
-      <div class="pagination">
-        <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fa-solid fa-users"></i></div>
+        <div>
+          <div class="stat-label">Tổng Người</div>
+          <div class="stat-value" id="statPeople">0 <span>người</span></div>
+        </div>
       </div>
+      <div class="stat-card">
+        <div class="stat-icon red"><i class="fa-solid fa-rotate-left"></i></div>
+        <div>
+          <div class="stat-label">Tiền Hoàn Trả</div>
+          <div class="stat-value" id="statRefund">0 <span>VNĐ</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+      <div class="section-title"><i class="fa-solid fa-layer-group"></i> Danh Sách Hóa Đơn</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterBills('all',this)">Tất cả</button>
+          <button class="filter-tab" onclick="filterBills('active',this)">Hợp lệ</button>
+          <button class="filter-tab refund-tab" onclick="filterBills('refund',this)"><i class="fa-solid fa-rotate-left"></i> Hoàn tiền</button>
+        </div>
+        <div class="bill-count" id="billCountLabel">9 hóa đơn</div>
+      </div>
+    </div>
+
+    <div class="bills-grid" id="billsGrid"></div>
+
+    <div class="pagination">
+      <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- BILL DETAIL MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modal">
-    <div class="modal-header">
+    <div class="modal-header" id="modalHeader">
       <div class="modal-header-left">
         <div class="modal-bill-id" id="modalId"></div>
         <div class="modal-bill-date" id="modalDate"></div>
@@ -587,8 +509,15 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightboxImg" src="" alt="Ảnh phóng to">
+</div>
+
 <script>
 const bills = [
+  // === BILL CŨ (GỐC) ===
   {
     id: "232062_ihtql",
     date: "13:53:52 8/4/2026",
@@ -602,6 +531,7 @@ const bills = [
     deposit: 250000,
     note: "Ở lại 1 ngày nên chỉ thuê 1 lều gỗ cho gia đình <3",
     extra: [],
+    refund: false,
     imgIndex: 0
   },
   {
@@ -617,6 +547,7 @@ const bills = [
     deposit: 300000,
     note: "Dạ suối cho 2 lều sát nhau nhé ạ",
     extra: [],
+    refund: false,
     imgIndex: 1
   },
   {
@@ -632,6 +563,7 @@ const bills = [
     deposit: 750000,
     note: "Gia đình mình đi 12 người, Suối sắp xếp cho các lều màu xanh nhỏ cho đủ 12 người nhé ạ",
     extra: [],
+    refund: false,
     imgIndex: 2
   },
   {
@@ -650,6 +582,7 @@ const bills = [
       { label: "Vé vào cổng 50k", val: "Chưa có" },
       { label: "Phí qua đêm 50k", val: "Chưa có" }
     ],
+    refund: false,
     imgIndex: 3
   },
   {
@@ -669,6 +602,7 @@ const bills = [
       { label: "Vé vào cổng", val: "Chưa có" },
       { label: "Phụ phí qua đêm", val: "Chưa có" }
     ],
+    refund: false,
     imgIndex: 4
   },
   {
@@ -687,8 +621,146 @@ const bills = [
       { label: "Lều", val: "Lều 6 người" },
       { label: "Phụ phí qua đêm", val: "Chưa có" }
     ],
+    refund: false,
     imgIndex: 5
   },
+  // === CÁC BILL MỚI TỪ ẢNH ===
+  {
+    id: "729295_zdbpv",
+    date: "18:08:49 21/4/2026",
+    name: "Thuỳ Linh",
+    phone: "0328249908",
+    people: 10,
+    arrive: "2026-05-01",
+    depart: "2026-05-02",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 500000,
+    deposit: 250000,
+    note: null,
+    extra: [
+      { label: "Vé vào 10 người", val: "Cọc 50% vé vào cho 10 người" },
+      { label: "Giờ check-in", val: "9h sáng ngày 01/05/2026" }
+    ],
+    refund: false,
+    imgIndex: 0
+  },
+  {
+    id: "141266_xeueq",
+    date: "18:15:41 21/4/2026",
+    name: "Tú Nguyễn",
+    phone: "0919881352",
+    people: 8,
+    arrive: "2026-05-01",
+    depart: "2026-05-02",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 600000,
+    deposit: 300000,
+    note: "Nếu đến đó anh thấy chật thì anh sẽ nâng lên lều 6 người!",
+    extra: [
+      { label: "Lều", val: "2 lều cho 4 người" }
+    ],
+    refund: false,
+    imgIndex: 1
+  },
+  {
+    id: "011262_fy5wy",
+    date: "20:03:31 22/4/2026",
+    name: "Trường An",
+    phone: "0372350313",
+    people: 6,
+    arrive: "2026-04-30",
+    depart: "2026-05-01",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 300000,
+    deposit: 150000,
+    note: null,
+    extra: [
+      { label: "Vé và cổng", val: "Cọc 50% cho 6 vé vào cổng" }
+    ],
+    refund: false,
+    imgIndex: 2
+  },
+  {
+    id: "311366_4r9vr",
+    date: "20:08:31 22/4/2026",
+    name: "Nguyễn Ngọc Minh Anh",
+    phone: "0336624719",
+    people: 2,
+    arrive: "2026-04-30",
+    depart: "2026-05-01",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 1600000,
+    deposit: 800000,
+    note: null,
+    extra: [
+      { label: "Lều", val: "2 lều, mỗi lều 2 người" },
+      { label: "Vé vào cổng", val: "Chưa có" },
+      { label: "Phụ phí qua đêm", val: "Chưa có" }
+    ],
+    refund: false,
+    imgIndex: 3
+  },
+  {
+    id: "561137_vkzbx",
+    date: "20:12:41 22/4/2026",
+    name: "Ly Phạm",
+    phone: "0834567673",
+    people: 5,
+    arrive: "2026-04-30",
+    depart: "2026-05-01",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 4995000,
+    deposit: 2500000,
+    note: "Chị đến tầm 9h-10h nè",
+    extra: [
+      { label: "Combo 999k", val: "Đặt cọc 50% cho 5 combo 999k" }
+    ],
+    refund: false,
+    imgIndex: 4
+  },
+  {
+    id: "303741_l2zwd",
+    date: "21:45:03 25/4/2026",
+    name: "Trương Phú Hào",
+    phone: "0968309020",
+    people: 2,
+    arrive: "2026-04-27",
+    depart: "2026-04-28",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 500000,
+    deposit: 250000,
+    note: null,
+    extra: [
+      { label: "Bungalow", val: "1 đêm bungalow 2 người 1 đêm" },
+      { label: "Vé vào cổng", val: "Chưa có" },
+      { label: "Phụ phí qua đêm", val: "Chưa có" }
+    ],
+    refund: false,
+    imgIndex: 5
+  },
+  {
+    id: "002042_9e8na",
+    date: "21:43:22 27/4/2026",
+    name: "Võ Thành Đạt",
+    phone: "0779520309",
+    people: 13,
+    arrive: "2026-05-01",
+    depart: "2026-05-02",
+    tour: "Phạm Đoàn La Ngâu",
+    total: 1800000,
+    deposit: 900000,
+    note: null,
+    extra: [
+      { label: "Lều", val: "Lều dành cho 13 người" },
+      { label: "Số lượng lều", val: "3 lều || 2 lều 4, 1 lều 5" },
+      { label: "Giờ đến", val: "10h sáng ngày 1/5" },
+      { label: "Vé vào cổng", val: "Chưa có" },
+      { label: "Phụ phí qua đêm", val: "Chưa có" }
+    ],
+    refund: false,
+    imgIndex: 6
+  },
+  // === ĐƠN HOÀN TIỀN ===
   {
     id: "—",
     date: "13:47:25 14/4/2026",
@@ -706,46 +778,83 @@ const bills = [
       { label: "Vé vào cổng", val: "Chưa có" },
       { label: "Phụ phí qua đêm", val: "Chưa có" }
     ],
-    imgIndex: 6
+    refund: true,
+    refundReason: "Hôm qua bên em về buổi chiều nên ko có dùng lều bên mình a. A chủ có nói a gửi lại tiền cọc. Có gì a hỏi lại giúp em nha.",
+    refundImgIndex: 7,
+    imgIndex: null
   }
 ];
 
-// Actual uploaded images mapped by index
 const imgPaths = [
-  "/mnt/user-data/uploads/1776225551623_image.png",
-  "/mnt/user-data/uploads/1776225556513_image.png",
-  "/mnt/user-data/uploads/1776225561144_image.png",
-  "/mnt/user-data/uploads/1776225564971_image.png",
-  "/mnt/user-data/uploads/1776225574423_image.png",
-  "/mnt/user-data/uploads/1776225579466_image.png",
-  "/mnt/user-data/uploads/1776225584648_image.png"
+  "/mnt/user-data/uploads/1778134780337_image.png",
+  "/mnt/user-data/uploads/1778134789487_image.png",
+  "/mnt/user-data/uploads/1778134794680_image.png",
+  "/mnt/user-data/uploads/1778134799991_image.png",
+  "/mnt/user-data/uploads/1778134804755_image.png",
+  "/mnt/user-data/uploads/1778134809333_image.png",
+  "/mnt/user-data/uploads/1778134817930_image.png",
+  "/mnt/user-data/uploads/1778134921428_image.png"  // chat screenshot - refund reason
 ];
+
+let currentFilter = 'all';
 
 function fmt(n) {
   return n.toLocaleString('vi-VN');
 }
 
 function computeStats() {
-  let total = 0, deposit = 0, people = 0;
-  bills.forEach(b => { total += b.total; deposit += b.deposit; people += b.people; });
-  document.getElementById('statTotal').innerHTML = fmt(total) + ' <span>VNĐ</span>';
-  document.getElementById('statDeposit').innerHTML = fmt(deposit) + ' <span>VNĐ</span>';
-  document.getElementById('statPeople').innerHTML = people + ' <span>người</span>';
+  let total = 0, deposit = 0, people = 0, refundAmt = 0;
+  bills.forEach(b => {
+    if (b.refund) {
+      refundAmt += b.deposit;
+    } else {
+      total += b.total;
+      deposit += b.deposit;
+    }
+    people += b.people;
+  });
+  document.getElementById('statTotal').innerHTML   = fmt(total)     + ' <span>VNĐ</span>';
+  document.getElementById('statDeposit').innerHTML = fmt(deposit)   + ' <span>VNĐ</span>';
+  document.getElementById('statPeople').innerHTML  = people         + ' <span>người</span>';
+  document.getElementById('statRefund').innerHTML  = fmt(refundAmt) + ' <span>VNĐ</span>';
+}
+
+function filterBills(type, el) {
+  currentFilter = type;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderBills();
 }
 
 function renderBills() {
   const grid = document.getElementById('billsGrid');
   grid.innerHTML = '';
-  bills.forEach((b, i) => {
+  const filtered = bills.filter(b => {
+    if (currentFilter === 'active') return !b.refund;
+    if (currentFilter === 'refund') return b.refund;
+    return true;
+  });
+  document.getElementById('billCountLabel').textContent = filtered.length + ' hóa đơn';
+  document.getElementById('badgeCount').textContent = bills.length + ' Bills';
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-size:13px"><i class="fa-solid fa-inbox" style="font-size:32px;display:block;margin-bottom:10px;opacity:0.4"></i>Không có hóa đơn nào</div>';
+    return;
+  }
+
+  filtered.forEach((b) => {
+    const idx = bills.indexOf(b);
     const card = document.createElement('div');
-    card.className = 'bill-card';
+    card.className = 'bill-card' + (b.refund ? ' refund-card' : '');
+
     card.innerHTML = `
+      ${b.refund ? `<div class="refund-ribbon" onclick="openRefundReason(${idx})" title="Xem lý do hoàn tiền"><i class="fa-solid fa-rotate-left"></i> Hoàn tiền</div>` : ''}
       <div class="bill-card-header">
         <span class="bill-id"><i class="fa-solid fa-hashtag"></i> ${b.id}</span>
         <span class="bill-date"><i class="fa-regular fa-clock"></i> ${b.date}</span>
       </div>
       <div class="bill-card-body">
-        <div class="bill-name"><i class="fa-solid fa-user" style="color:var(--cyan);font-size:11px;margin-right:6px"></i>${b.name}</div>
+        <div class="bill-name"><i class="fa-solid fa-user" style="color:${b.refund?'var(--refund)':'var(--cyan)'};font-size:11px;margin-right:5px"></i>${b.name}</div>
         <div class="bill-meta">
           <div class="bill-meta-row"><i class="fa-solid fa-phone"></i> ${b.phone}</div>
           <div class="bill-meta-row"><i class="fa-solid fa-users"></i> ${b.people} người</div>
@@ -755,16 +864,19 @@ function renderBills() {
         <div class="bill-amounts">
           <div class="amount-item">
             <span class="amount-label">Tổng tiền</span>
-            <span class="amount-val total">${fmt(b.total)}</span>
+            <span class="amount-val ${b.refund?'refunded':'total'}">${fmt(b.total)}</span>
           </div>
           <div class="amount-item" style="text-align:right">
-            <span class="amount-label">Tiền cọc</span>
-            <span class="amount-val deposit">${fmt(b.deposit)}</span>
+            <span class="amount-label">${b.refund ? 'Tiền cọc (HT)' : 'Tiền cọc'}</span>
+            <span class="amount-val ${b.refund?'refunded':'deposit'}">${fmt(b.deposit)}</span>
           </div>
         </div>
-        <button class="bill-detail-btn" onclick="openModal(${i})">
+        <button class="bill-detail-btn ${b.refund?'refund-btn':''}" onclick="openModal(${idx})">
           <i class="fa-solid fa-eye"></i> Xem Chi Tiết
         </button>
+        ${b.refund ? `<button class="bill-detail-btn refund-btn" style="margin-top:6px" onclick="openRefundReason(${idx})">
+          <i class="fa-solid fa-message"></i> Xem Lý Do Hoàn Tiền
+        </button>` : ''}
       </div>
     `;
     grid.appendChild(card);
@@ -776,30 +888,60 @@ function openModal(i) {
   document.getElementById('modalId').textContent = 'Mã bill: ' + b.id;
   document.getElementById('modalDate').innerHTML = '<i class="fa-regular fa-clock"></i> ' + b.date;
 
-  // Build extra rows for 2-col grid
+  const hdr = document.getElementById('modalHeader');
+  const modal = document.getElementById('modal');
+  if (b.refund) {
+    hdr.classList.add('refund-header');
+    modal.classList.add('refund-modal');
+  } else {
+    hdr.classList.remove('refund-header');
+    modal.classList.remove('refund-modal');
+  }
+
   let extraGridRows = b.extra.map(e => `
     <div class="modal-row">
       <span class="modal-row-label">${e.label}</span>
       <span class="modal-row-value">${e.val}</span>
     </div>
   `).join('');
-
-  // If odd number of extras, pad with empty cell
   if (b.extra.length % 2 !== 0) {
-    extraGridRows += `<div class="modal-row" style="background:transparent;border-color:transparent"></div>`;
+    extraGridRows += `<div class="modal-row" style="border:none;background:transparent"></div>`;
   }
 
-  let noteFullHtml = b.note ? `
+  const noteHtml = b.note ? `
     <div class="modal-row-full">
-      <span class="modal-row-label"><i class="fa-solid fa-note-sticky" style="color:var(--cyan)"></i> Ghi chú</span>
-      <span class="modal-row-value" style="font-style:italic;color:var(--muted);font-size:11px">${b.note}</span>
-    </div>
-  ` : '';
+      <span class="modal-row-label"><i class="fa-solid fa-note-sticky" style="color:var(--cyan);margin-right:4px"></i>Ghi chú</span>
+      <span class="modal-row-value" style="font-style:italic;color:var(--muted)">${b.note}</span>
+    </div>` : '';
 
-  // Determine depart row - need even pairing
-  const departRow = b.depart ? `<div class="modal-row"><span class="modal-row-label">Ngày đi</span><span class="modal-row-value">${b.depart}</span></div>` : `<div class="modal-row" style="background:transparent;border-color:transparent"></div>`;
+  const departRow = b.depart
+    ? `<div class="modal-row"><span class="modal-row-label">Ngày đi</span><span class="modal-row-value">${b.depart}</span></div>`
+    : `<div class="modal-row" style="border:none;background:transparent"></div>`;
+
+  const refundBanner = b.refund ? `
+    <div class="refund-banner">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <div>
+        <div class="refund-banner-text">⚠️ Đơn này đã được đánh dấu <strong>HOÀN TIỀN</strong><br>
+        Tiền cọc ${fmt(b.deposit)} VNĐ cần được hoàn trả cho khách hàng.</div>
+        <button class="refund-reason-btn" onclick="openRefundReason(${i})">
+          <i class="fa-solid fa-message"></i> Xem lý do hoàn tiền
+        </button>
+      </div>
+    </div>` : '';
+
+  const imgSrc = b.imgIndex !== null ? imgPaths[b.imgIndex] : null;
+  const imgSection = imgSrc ? `
+    <div class="modal-img-section">
+      <div class="modal-img-label"><i class="fa-solid fa-image"></i> Ảnh Bill / Cọc Tiền</div>
+      <div class="modal-img-wrap" onclick="openLightbox('${imgSrc}')">
+        <img src="${imgSrc}" alt="Ảnh bill ${b.name}"
+          onerror="this.style.display='none';this.parentElement.innerHTML='<div style=padding:40px;color:var(--muted);font-size:12px;text-align:center><i class=fa-solid fa-image style=font-size:32px;display:block;margin-bottom:10px></i>Không tìm thấy ảnh</div>'">
+      </div>
+    </div>` : '';
 
   document.getElementById('modalBody').innerHTML = `
+    ${refundBanner}
     <div class="modal-grid">
       <div class="modal-row">
         <span class="modal-row-label">Họ và tên</span>
@@ -824,20 +966,43 @@ function openModal(i) {
       ${departRow}
       <div class="modal-row">
         <span class="modal-row-label">Tổng tiền (VNĐ)</span>
-        <span class="modal-row-value highlight">${fmt(b.total)}</span>
+        <span class="modal-row-value ${b.refund ? 'refund-val' : 'highlight'}">${fmt(b.total)}</span>
       </div>
       <div class="modal-row">
-        <span class="modal-row-label">Tiền cọc (VNĐ)</span>
-        <span class="modal-row-value gold">${fmt(b.deposit)}</span>
+        <span class="modal-row-label">${b.refund ? 'Tiền cọc – Hoàn trả' : 'Tiền cọc (VNĐ)'}</span>
+        <span class="modal-row-value ${b.refund ? 'refund-val' : 'gold'}">${fmt(b.deposit)}</span>
       </div>
       ${extraGridRows}
     </div>
-    ${noteFullHtml}
-    <div class="modal-img-section" style="padding:12px">
-      <div class="modal-img-label"><i class="fa-solid fa-image"></i> Ảnh Cọc Tiền</div>
-      <div class="modal-img-wrap">
-        <img src="${imgPaths[b.imgIndex]}" alt="Ảnh cọc tiền ${b.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=padding:40px;color:var(--muted);font-size:12px;text-align:center><i class=fa-solid fa-image style=font-size:32px;display:block;margin-bottom:10px></i>Ảnh bill chuyển khoản</div>'">
+    ${noteHtml}
+    ${imgSection}
+  `;
+
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function openRefundReason(i) {
+  const b = bills[i];
+  if (!b.refund) return;
+  const src = imgPaths[b.refundImgIndex];
+
+  document.getElementById('modalId').textContent = 'Lý do hoàn tiền: ' + b.name;
+  document.getElementById('modalDate').innerHTML = '<i class="fa-solid fa-rotate-left"></i> Hoàn tiền cọc';
+  document.getElementById('modalHeader').classList.add('refund-header');
+  document.getElementById('modal').classList.add('refund-modal');
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="refund-banner">
+      <i class="fa-solid fa-comment-dots"></i>
+      <div class="refund-banner-text">"${b.refundReason}"</div>
+    </div>
+    <div class="modal-img-section" style="padding:0;margin-top:0">
+      <div class="modal-img-label" style="padding:0 0 10px"><i class="fa-solid fa-screenshot"></i> Tin nhắn xác nhận</div>
+      <div class="modal-img-wrap" onclick="openLightbox('${src}')">
+        <img src="${src}" alt="Lý do hoàn tiền"
+          onerror="this.style.display='none';this.parentElement.innerHTML='<div style=padding:40px;color:var(--muted);font-size:12px;text-align:center><i class=fa-solid fa-image style=font-size:32px;display:block;margin-bottom:10px></i>Không tìm thấy ảnh</div>'">
       </div>
+      <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;font-style:italic">Nhấn vào ảnh để xem phóng to</div>
     </div>
   `;
 
@@ -852,17 +1017,31 @@ document.getElementById('modalOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
 
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('sidebarOverlay').classList.toggle('open');
 }
 
-function setPage(page) {
+function setPage(page, el) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  el.classList.add('active');
   document.getElementById('pageTitle').textContent = page === 'overview' ? 'Tổng Quan' : 'Danh Sách Bill';
 }
 
+// Init
 computeStats();
 renderBills();
 </script>
